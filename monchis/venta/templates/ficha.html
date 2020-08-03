@@ -1,0 +1,133 @@
+{% load static %}
+
+<!DOCTYPE HTML5>
+<html>
+<head>
+<meta charset="UTF-8">
+
+
+<style>
+table1 {
+   position: absolute;
+   width: 100%;
+   border: 1px solid #999;
+   text-align: left;
+   border-collapse: collapse;
+   margin: 0 0 1em 0;
+   caption-side: top;
+}
+caption, td, th {
+   padding: 0.1em;
+}
+th, td {
+   border-bottom: 0.5px solid #999;
+   width: 50%;
+}
+caption {
+   font-weight: bold;
+   font-style: italic;
+}
+</style>
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'logotipo.ico' %}"/>
+    <title>Venta numero: {{ miventa.no_venta }}</title>
+    <img alt="" src="{% static "header.jpg" %}" height="300px" width="1800px">
+
+</head>
+<body>
+
+        <h2>DATOS DE LA VENTA NUMERO: {{ miventa.no_venta }}</h2>
+            <h2>
+            <table width="350" border="0">
+                <tr>
+                    <th align="left">
+                        NIT:
+                    </th>
+                    <td align="left">
+                        {{ miventa.comprador.nit }}
+                    </td>
+                </tr>
+                <tr>
+                    <th align="left">
+                        Cliente:
+                    </th>
+                    <td align="left">
+                        {{ miventa.comprador }}
+                    </td>
+                </tr>
+                <tr>
+                    <th align="left">
+                        Fecha de emision:
+                    </th>
+                    <td align="left">
+                        {{ miventa.fecha | date:'d-m-Y' }}
+                    </td>
+                </tr>
+                <tr>
+                    <th align="left">
+                        Hora de emision:
+                    </th>
+                    <td align="left">
+                        {{ miventa.fecha | date:'h:i a' }}
+                    </td>
+                </tr>
+                <tr>
+                    <th align="left">
+                        Total:
+                    </th>
+                    <td align="left">
+                        {% load humanize %}
+                        Q{{ miventa.total | intcomma}}0
+                    </td>
+                </tr>
+                <tr>
+                    <th align="left">
+                        Tipo de pago:
+                    </th>
+                    <td align="left">
+                        {{ miventa.pago }}
+                    </td>
+                </tr>
+                <tr>
+                    <th align="left">
+                        Vendedor:
+                    </th>
+                    <td align="left">
+                        {{ miventa.vendedor }}
+                    </td>
+                </tr>
+                <tr>
+                    <th align="left">
+                        Referencia de entrega:
+                    </th>
+                    <td align="left">
+                        {{ miventa.referencia }}
+                    </td>
+                </tr>                
+            </table>
+        </h3>
+
+<table>
+    <h1><center>Detalle de la venta</center></h1>
+    <h1>
+    <tr>
+        <th><h1>Cantidad</h1></th>
+        <th><h1>Producto</h1></th>
+        <th><h1>Precio unitario</h1></th>
+        <th><h1>Subtotal</h1></th>
+    </tr>
+    </h1>
+    {% for deta1 in deta %}
+        {% if miventa.no_venta == deta1.id_venta.no_venta %}
+        <tr>
+        <td><h1><center>{{ deta1.canti }}</center></td>
+        <td><h1><center>{{ deta1.id_prod }}</center></td>
+        <td><h1><center>Q{{ deta1.precio | intcomma  }}</center></td>
+        <td><h1><center>Q{{ deta1.subtotal | intcomma  }}</center></td>
+        </tr>
+        {% endif %}
+    {% endfor %}
+</table>
+<br><br><br>
+<h1 align="right">Recibido por:________________________</h1>
+</body>
+</html>
