@@ -36,7 +36,7 @@ class Producto(models.Model):
 
     def image_tag(self):
         if not self.image:
-            return mark_safe('<img src="/media/sin-imagen.png" width="100" height="100" />')
+            return mark_safe('<img src="/media/image.jpg" width="100" height="100" />')
         else:
             return mark_safe('<img src="/media/%s" width="100" height="100" />' % (self.image))
 

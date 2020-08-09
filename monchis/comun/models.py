@@ -4,7 +4,7 @@ from django.db import models
 class Persona(models.Model):
     nombre = models.CharField('Nombre', max_length=50)
     apellido = models.CharField('Apellido', max_length=50)
-    direccion = models.CharField('Direccion', max_length=50)
+    direccion = models.CharField('Direccion', max_length=50, blank=True, null=True)
     telefono = models.PositiveIntegerField('Telefono', blank=True, null=True)
 
     def __str__(self):

@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '^r1*^v%%c=f8ze_8g-0=suw2mksld0#jk*0gks4ek1&yj43@5d'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '192.168.1.10']
+ALLOWED_HOSTS = ['monchis.pythonanywhere.com']
 
 
 # Application definition
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'venta',
     'trabajador',
     'ingreso',
+    'contacto',
 
 ]
 
@@ -85,8 +86,11 @@ WSGI_APPLICATION = 'monchis.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'monchis$monchis',
+        'USER': 'monchis',
+        'PASSWORD': 'yuri1234',
+        'HOST': 'monchis.mysql.pythonanywhere-services.com',
     }
 }
 
@@ -130,9 +134,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = '/Users/bjms2/Envs/CONSTMONCHIS/'
-
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'))
+STATIC_ROOT = '/home/monchis/constmonchis/monchis/static'
 
 MEDIA_ROOT = 'media'
 MEDIA_URL = '/media/'

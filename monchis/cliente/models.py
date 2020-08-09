@@ -3,7 +3,7 @@ from comun.models import Persona
 
 
 class Cliente(Persona):
-    nit = models.CharField('Nit', max_length=10, primary_key=True)
+    nit = models.CharField('Nit', max_length=10, null=True, blank=True)
     email = models.EmailField('E-mail', max_length=50, null=True, blank=True)
     activo = models.BooleanField(default=True, verbose_name='activo')
 

@@ -19,10 +19,14 @@ class FichaPDFViewProductos(PDFTemplateView):
         )
 
 
+def index(request):
+    return render(request, 'index.html', {})
+
+
 def ProductoLista(request):
     prod = Producto.objects.all()
     contexto = {'productos': prod}
-    return render(request, 'productos_lista.html', contexto)
+    return render(request, 'products.html', contexto)
 
 
 def contact(request):

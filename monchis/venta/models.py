@@ -14,7 +14,7 @@ from datetime import datetime
 class Venta(models.Model):
     no_venta = models.IntegerField('No de venta', null=True, blank=True)
     comprador = models.ForeignKey(
-        Cliente, on_delete=models.CASCADE, null=True, blank=True)
+        Cliente, on_delete=models.CASCADE, null=False, blank=True)
     fecha = models.DateTimeField('Fecha emision', auto_now=True)
     pago = models.ForeignKey(
         Tipopago, on_delete=models.CASCADE, null=True, blank=True)

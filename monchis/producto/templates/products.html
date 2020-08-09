@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<style>
+.card {
+  box-shadow: 0 9px 9px 0 rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  margin: auto;
+  text-align: left;
+  font-family: Helvetica;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #147199;
+}
+
+.foot {
+  overflow: hidden;
+  background-color: #147199;
+}
+
+.topnav a {
+  float: left;
+  color: #147199;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+
+}
+
+.topnav a {
+  float: right;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+</style>
+
+<meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+{% load static %}
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'logotipo.ico' %}"/>
+    <div class="topnav">
+      <a href="/contacto">Contacto</a>
+      <a href="/admin">Administrador</a>
+      <a href="/">INICIO</a>
+      <br><br>
+      <center><h2 style="color:white">CONSTRUCTORA MONCHIS</h2></center>
+    </div>
+    <title>CONSTRUCTORA MONCHIS</title>
+
+    <center><img src="{% static 'logo.png' %}" alt="My image" width="300" height="300"></center>
+
+</head>
+
+<body>
+
+<div class="container">
+<div class="row">
+{% if productos %}
+    {% for pr in productos %}
+        {% if pr.cantidad > 0 %}
+            {% if pr.visible == True %}
+                <div class="col-md-4">
+                    <br>
+                    <div class="card">
+                        {% if pr.image %}
+                            <img src="{{ pr.image.url }}" alt="{{pr.producto}}" style="width:100%">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5><b>{{ pr.nombre }}</b></h5>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+</div>
+</div>
+
+</body>
+</html>

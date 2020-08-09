@@ -5,7 +5,7 @@ from django.utils.safestring import mark_safe
 
 class Trabajador(Persona):
     codigo = models.IntegerField('Codigo')
-    fecha_nacimiento = models.DateField('Fecha de nacimiento')
+    fecha_nacimiento = models.DateField('Fecha de nacimiento', null=True, blank=True)
     activo = models.BooleanField(default=True, verbose_name='activo')
 
     def clean(self):
